@@ -186,22 +186,23 @@ if st.button("Fetch Data"):
             channels = channel_data["items"]
 
             # Collect results
-            for video, stat, channel in zip(videos, stats, channels):
-                title = video["snippet"].get("title", "N/A")
-                description = video["snippet"].get("description", "")[:200]
-                video_url = f"https://www.youtube.com/watch?v={video['id']['videoId']}"
-                views = int(stat["statistics"].get("viewCount", 0))
-                subs = int(channel["statistics"].get("subscriberCount", 0))
+for video, stat, channel in zip(videos, stats, channels):
+    title = video["snippet"].get("title", "N/A")
+    description = video["snippet"].get("description", "")[:200]
+    video_url = f"https://www.youtube.com/watch?v={video['id']['videoId']}"
+    views = int(stat["statistics"].get("viewCount", 0))
+    subs = int(channel["statistics"].get("subscriberCount", 0))
 
-                # Only include channels with fewer than 10,000 subscribers
-                if subs < 10000:
-                    all_results.append({
-                        "Title": title,
-                        "Description": description,
-                        "URL": video_url,
-                        "Views": views,
-                        "Subscribers": subs
-                    })
+    # Only include channels with fewer than 10,000 subscribers
+    if subs < 10000:
+        all_results.append({
+            "Title": title,
+            "Description": description,
+            "URL": video_url,
+            "Views": views,
+            "Subscribers": subs
+        })
+
 
         # Display results
         if all_results:
