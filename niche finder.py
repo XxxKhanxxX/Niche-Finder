@@ -193,7 +193,7 @@ if st.button("Fetch Data"):
                 views = int(stat["statistics"].get("viewCount", 0))
                 subs = int(channel["statistics"].get("subscriberCount", 0))
 
-                # Only include channels with fewer than 3,000 subscribers
+                # Only include channels with fewer than 10,000 subscribers
                 if subs < 10000:
                     all_results.append({
                         "Title": title,
